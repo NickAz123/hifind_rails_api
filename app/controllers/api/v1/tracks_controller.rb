@@ -4,7 +4,6 @@ class Api::V1::TracksController < ApplicationController
   # GET /tracks
   def index
     @tracks = Track.all
-
     render json: @tracks
   end
 
