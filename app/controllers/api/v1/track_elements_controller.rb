@@ -1,4 +1,4 @@
-class TrackElementsController < ApplicationController
+class Api::V1::TrackElementsController < ApplicationController
   before_action :set_track_element, only: %i[ show update destroy ]
 
   # GET /track_elements

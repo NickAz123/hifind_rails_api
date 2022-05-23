@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  resources :tracks
-  resources :track_genres
-  resources :track_elements
-  resources :genres
-  resources :elements
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  namespace :api do
+    namespace :v1 do
+      resources :genres
+      resources :track_elements
+      resources :track_genres
+      resources :tracks
+      resources :elements
+    end
+  end
 end

@@ -1,4 +1,4 @@
-class TrackGenresController < ApplicationController
+class Api::V1::TrackGenresController < ApplicationController
   before_action :set_track_genre, only: %i[ show update destroy ]
 
   # GET /track_genres

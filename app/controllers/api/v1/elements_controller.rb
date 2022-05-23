@@ -1,4 +1,4 @@
-class ElementsController < ApplicationController
+class Api::V1::ElementsController < ApplicationController
   before_action :set_element, only: %i[ show update destroy ]
 
   # GET /elements

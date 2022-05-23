@@ -1,4 +1,4 @@
-class TracksController < ApplicationController
+class Api::V1::TracksController < ApplicationController
   before_action :set_track, only: %i[ show update destroy ]
 
   # GET /tracks
