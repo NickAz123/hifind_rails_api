@@ -1,3 +1,4 @@
 class Element < ApplicationRecord
-    belongs_to :track_element
+    has_many :track_elements
+    has_many :tracks, :through => :track_elements
 end
