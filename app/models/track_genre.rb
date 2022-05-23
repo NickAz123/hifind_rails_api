@@ -1,0 +1,2 @@
+class TrackGenre < ApplicationRecord
+end

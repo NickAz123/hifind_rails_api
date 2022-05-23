@@ -1,0 +1,2 @@
+class TrackElement < ApplicationRecord
+end

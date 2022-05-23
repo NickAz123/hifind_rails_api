@@ -1,0 +1,25 @@
+default: &default
+  adapter: postgresql
+  pool: 5
+  encoding: unicode
+  database: hifind_development
+  host: localhost
+  port: 5432
+  username: postgres
+  password: Crazymoving1
+  timeout: 5000
+
+development:
+  <<: *default
+  database: hifind_development
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: hifind_development
+
+production:
+  <<: *default
+  database: hifind_development

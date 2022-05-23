@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  artist: MyString
+  producers: MyString
+  mixengineer: MyString
+  masterengineer: MyString
+  releasedate: 2022-05-23
+  imagesrc: MyString
+
+two:
+  name: MyString
+  artist: MyString
+  producers: MyString
+  mixengineer: MyString
+  masterengineer: MyString
+  releasedate: 2022-05-23
+  imagesrc: MyString
