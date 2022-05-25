@@ -17,7 +17,7 @@ class Api::V1::TracksController < ApplicationController
     @track = Track.new(track_params)
 
     if @track.save
-      render json: @track, status: :created, location: @track
+      render json: @track, status: :created
     else
       render json: @track.errors, status: :unprocessable_entity
     end
