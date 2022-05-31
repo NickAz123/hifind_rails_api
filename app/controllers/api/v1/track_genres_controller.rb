@@ -18,7 +18,7 @@ class Api::V1::TrackGenresController < ApplicationController
     @track_genre = TrackGenre.new(track_genre_params)
 
     if @track_genre.save
-      render json: @track_genre, status: :created, location: @track_genre
+      render json: @track_genre, status: :created
     else
       render json: @track_genre.errors, status: :unprocessable_entity
     end
@@ -46,6 +46,6 @@ class Api::V1::TrackGenresController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def track_genre_params
-      params.require(:track_genre).permit(:trackid, :genreid)
+      params.require(:track_genre).permit(:track_id, :genre_id)
     end
 end

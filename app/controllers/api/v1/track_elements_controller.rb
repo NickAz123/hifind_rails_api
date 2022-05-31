@@ -18,7 +18,7 @@ class Api::V1::TrackElementsController < ApplicationController
     @track_element = TrackElement.new(track_element_params)
 
     if @track_element.save
-      render json: @track_element, status: :created, location: @track_element
+      render json: @track_element, status: :created
     else
       render json: @track_element.errors, status: :unprocessable_entity
     end
@@ -46,6 +46,6 @@ class Api::V1::TrackElementsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def track_element_params
-      params.require(:track_element).permit(:trackid, :elementid)
+      params.require(:track_element).permit(:track_id, :element_id)
     end
 end

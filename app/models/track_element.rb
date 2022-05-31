@@ -1,4 +1,4 @@
 class TrackElement < ApplicationRecord
-    belongs_to :track
-    belongs_to :element
+    belongs_to :track, optional: true
+    belongs_to :element, optional: true
 end
