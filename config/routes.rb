@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       resources :tracks
       resources :elements
       resources :users
+
+      post "/login", to: "users#login"
     end
   end
 end

@@ -13,6 +13,18 @@ class Api::V1::UsersController < ApplicationController
     render json: @user
   end
 
+  # POST /login
+  def login
+    @user = User.find_by(username: user_params[:username])
+    
+    if @user && @user.authenticate(user_params[:password])
+      token = encode_token({user_id: @user.id })
+      render json: { user: @user, token: token}, status: :ok
+    else
+      render json: {error: 'Invalid Username or Password'}, status: :unprocessable_entity
+    end 
+  end
+
   # POST /users
   def create
     # @user = User.new(user_params)
@@ -22,7 +34,7 @@ class Api::V1::UsersController < ApplicationController
       token = encode_token({user_id: @user.id })
       render json: { user: @user, token: token}, status: :created
     else 
-      render json: user.errors.full_messages, status: :unprocessable_entity
+      render json: {error: 'Invalid Username or Password'}, status: :unprocessable_entity
     end
     # if @user.save
     #   render json: @user, status: :created, location: @user
