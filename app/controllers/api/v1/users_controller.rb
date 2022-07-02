@@ -19,7 +19,8 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
 
     if user.valid?
-      render json: user, status: :created
+      tekn = encode_token({user_id: @user.id })
+      render json: { user: @user, token: token}, status: :created
     else 
       render json: user.errors.full_messages, status: :unprocessable_entity
     end
