@@ -56,7 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 0) do
   create_table "users", id: false, force: :cascade do |t|
     t.string "username", limit: 50, null: false
     t.string "email", limit: 50, null: false
-    t.string "passwordhash", limit: 50, null: false
+    t.string "password_digest", limit: 50, null: false
     t.string "role", limit: 20, null: false
   end
 
