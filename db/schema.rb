@@ -14,22 +14,31 @@ ActiveRecord::Schema[7.0].define(version: 0) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "curators", id: :integer, default: nil, force: :cascade do |t|
+    t.string "fullname", limit: 100
+    t.string "companyname", limit: 150
+    t.string "credits", limit: 255
+    t.string "description", limit: 2000
+  end
+
   create_table "elements", id: :integer, default: nil, force: :cascade do |t|
     t.string "name", limit: 50
+    t.string "color", limit: 50
   end
 
   create_table "genres", id: :integer, default: nil, force: :cascade do |t|
     t.string "name", limit: 50
+    t.string "color", limit: 50
   end
 
   create_table "track_elements", id: false, force: :cascade do |t|
-    t.integer "trackid", null: false
-    t.integer "elementid", null: false
+    t.integer "track_id", null: false
+    t.integer "element_id", null: false
   end
 
-  create_table "track_genres", id: false, force: :cascade do |t|
-    t.integer "trackid", null: false
-    t.integer "genreid", null: false
+  create_table "track_genres", id: :integer, default: nil, force: :cascade do |t|
+    t.integer "track_id", null: false
+    t.integer "genre_id", null: false
   end
 
   create_table "tracks", id: :integer, default: nil, force: :cascade do |t|
@@ -39,11 +48,21 @@ ActiveRecord::Schema[7.0].define(version: 0) do
     t.string "mixengineer", limit: 100
     t.string "masterengineer", limit: 100
     t.date "releasedate", null: false
-    t.string "imagesrc", limit: 250, null: false
+    t.string "imagesrc", limit: 250
+    t.string "description", limit: 10485760
+    t.integer "curatorid"
   end
 
-  add_foreign_key "track_elements", "elements", column: "elementid", name: "trackelements_elementsid_fk"
-  add_foreign_key "track_elements", "tracks", column: "trackid", name: "trackelements_trackid_fk"
-  add_foreign_key "track_genres", "genres", column: "genreid", name: "trackgenres_genreid_fk"
-  add_foreign_key "track_genres", "tracks", column: "trackid", name: "trackgenres_trackid_fk"
+  create_table "users", id: false, force: :cascade do |t|
+    t.string "username", limit: 50, null: false
+    t.string "email", limit: 50, null: false
+    t.string "passwordhash", limit: 50, null: false
+    t.string "role", limit: 20, null: false
+  end
+
+  add_foreign_key "track_elements", "elements", name: "trackelements_elementsid_fk"
+  add_foreign_key "track_elements", "tracks", name: "trackelements_trackid_fk"
+  add_foreign_key "track_genres", "genres", name: "trackgenres_genreid_fk"
+  add_foreign_key "track_genres", "tracks", name: "trackgenres_trackid_fk"
+  add_foreign_key "tracks", "curators", column: "curatorid", name: "curatorid_fk"
 end
