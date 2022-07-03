@@ -31,8 +31,13 @@ class Api::V1::UsersController < ApplicationController
     @user = User.create(user_params)
 
     if @user.valid?
-      token = encode_token({user_id: @user.id })
-      render json: { user: @user, token: token}, status: :created
+
+      if @user.save
+        token = encode_token({user_id: @user.id })
+        render json: { user: @user, token: token}, status: :created
+      else
+        render json: {error: 'Invalid Username or Password'}, status: :unprocessable_entity
+      end
     else 
       render json: {error: 'Invalid Username or Password'}, status: :unprocessable_entity
     end
