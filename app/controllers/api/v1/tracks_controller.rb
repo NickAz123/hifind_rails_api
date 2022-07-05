@@ -45,6 +45,6 @@ class Api::V1::TracksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def track_params
-      params.require(:track).permit(:name, :artist, :producers, :mixengineer, :masterengineer, :releasedate, :imagesrc)
+      params.require(:track).permit(:name, :artist, :producers, :mixengineer, :masterengineer, :releasedate, :imagesrc, :description)
     end
 end
