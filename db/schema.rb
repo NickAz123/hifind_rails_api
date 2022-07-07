@@ -50,7 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 0) do
     t.date "releasedate", null: false
     t.string "imagesrc", limit: 250
     t.string "description", limit: 10485760
-    t.integer "curatorid"
+    t.integer "collectionid"
   end
 
   create_table "users", id: false, force: :cascade do |t|
